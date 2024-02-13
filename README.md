@@ -1,3 +1,19 @@
+<p align="center">
+<sup>
+<b>PWC es una herramienta que facilita la conexión a una base de datos a través de un servidor web mediante el método POST, devolviendo la respuesta en formato JSON. Además, incluye versiones portátiles de servidores web y sistemas de gestión de bases de datos (SGBD)</b>
+</sup>
+</p>
+
+# ¿Quieres descargar PWC?
+Abajo encontrarás enlaces que te permitirán descargar y utilizar PWC.
+
+* PWC for Windows x64 - [PWC.7z](https://drive.google.com/file/d/10-C-0ahV7lhdxAjyFM4G0ZacKQeQtOPi/view?usp=sharing)
+
+# Como implementarlo en forma de Scripts
+Ahora se mostrará como utilizar PWC como Scripts y no como programa.
+
+* PWC for all platforms - [PHP.7z](https://drive.google.com/file/d/1bausl7pf6GpDL-Pnk0OIU-zEVSavEck5/view?usp=sharing)
+
 ## Clase: SolicitarDatos.php
 
 ### Ejemplo de uso (parámetro único):
