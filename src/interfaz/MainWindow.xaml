@@ -1,0 +1,94 @@
+﻿<Window x:Class="PWC.src.logica.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PWC.src.logica"
+        mc:Ignorable="d"
+        Title="PWC" Height="720" Width="1280" MinHeight="720" MinWidth="1280">
+
+    <Window.Resources>
+        <SolidColorBrush x:Key="ColorPrincipal" Color="#051628"/>
+        <SolidColorBrush x:Key="ColorSecundario" Color="#182c46"/>
+        <SolidColorBrush x:Key="ColorAdicion1" Color="#eb3b6a"/>
+        <SolidColorBrush x:Key="ColorAdicion2" Color="#13a0fe"/>
+        <SolidColorBrush x:Key="ColorAdicion3" Color="#2ed6fb"/>
+
+        <Style x:Key="NeonButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontFamily" Value="Helvetica"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="{Binding Background.Color, RelativeSource={RelativeSource TemplatedParent}}"
+                                      BlurRadius="10"
+                                      ShadowDepth="0"
+                                      Opacity="0.8"/>
+                    <!-- Ajusta la opacidad según tus preferencias -->
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Border x:Name="PART_Border"
+                                    Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="1"
+                                    CornerRadius="5"
+                                    SnapsToDevicePixels="True">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid Background="{StaticResource ColorPrincipal}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="160*" />
+            <RowDefinition Height="900*" />
+            <RowDefinition Height="290*" />
+        </Grid.RowDefinitions>
+        <!-- GridPanel para los enlaces -->
+        <Grid Grid.Row="0" Margin="60,30,60,0" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="phpMyAdmin" Grid.Column="0" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Foreground="White" FontFamily="Helvetica"/>
+            <TextBlock Text="pgAdmin" Grid.Column="1" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Foreground="White" FontFamily="Helvetica"/>
+            <TextBlock Text="MySQL terminal" MouseUp="Mysql_Click" x:Name="terminal_mysql" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="20" FontWeight="Bold" Foreground="White" FontFamily="Helvetica"/>
+            <TextBlock Text="PostgreSQL terminal" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="20" FontWeight="Bold" Foreground="White" FontFamily="Helvetica"/>
+        </Grid>
+        <!-- GridPanel para el terminal -->
+        <Grid Grid.Row="1" Margin="60,30,60,30" Background="{StaticResource ColorSecundario}">
+            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden">
+                <Grid>
+                    <TextBlock Grid.Column="0" Name="Consola" Padding="60" Foreground="White" FontFamily="Helvetica" TextWrapping="Wrap"/>
+                </Grid>
+            </ScrollViewer>
+        </Grid>
+        <!-- GridPanel para los botones -->
+        <Grid Grid.Row="2" Margin="60,30,60,60">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Content="Apache" Click="ApacheButton_Click" Name="ApacheButton" Margin="0,0,30,0" Grid.Column="0" HorizontalAlignment="Stretch" Style="{StaticResource NeonButtonStyle}" Background="{StaticResource ColorAdicion1}"/>
+            <Button Content="Nginx" Click="NginxButton_Click" Name="NginxButton" Margin="30,0,30,0" Grid.Column="1" HorizontalAlignment="Stretch" Style="{StaticResource NeonButtonStyle}" Background="{StaticResource ColorAdicion2}"/>
+            <Button Content="MySQL" Click="MySQLButton_Click" Name="MySQLButton" Margin="30,0,30,0" Grid.Column="2" HorizontalAlignment="Stretch" Style="{StaticResource NeonButtonStyle}" Background="{StaticResource ColorAdicion3}"/>
+            <Button Content="PostgreSQL" Click="PostgreSQLButton_Click" Name="PostgreSQLButton" Margin="30,0,0,0" Grid.Column="3" HorizontalAlignment="Stretch" Style="{StaticResource NeonButtonStyle}" Background="{StaticResource ColorSecundario}"/>
+        </Grid>
+    </Grid>
+</Window>
