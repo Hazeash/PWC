@@ -1,0 +1,5 @@
+Para entrar a phpMyAdmin se ha creado un usuario:
+
+CREATE USER 'pwc'@'%' IDENTIFIED BY '73rd1XR17s3o';
+GRANT ALL PRIVILEGES ON *.* TO 'pwc'@'%' WITH GRANT OPTION;
+FLUSH PRIVILEGES;

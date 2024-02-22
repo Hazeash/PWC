@@ -23,7 +23,7 @@ namespace PWC.src.mysql {
         private string logFilePath = "";
 
         private string mysqlBinConsole = "";
-        private string logFilePathConsole = "";
+        //private string logFilePathConsole = "";
 
         public void Init() {
             currentDirectory = AppDomain.CurrentDomain.BaseDirectory;
@@ -34,14 +34,14 @@ namespace PWC.src.mysql {
             dataDirectory = Path.Combine(projectDirectory, "dependencias", mysqlVersion, "data");
             logFilePath = Path.Combine(projectDirectory, "logs", "MySQL", "mysql_error.log");
             mysqlBinConsole = Path.Combine(projectDirectory, "dependencias", "mysql-8.0.36-winx64", "bin", "mysql.exe");
-            logFilePathConsole = Path.Combine(projectDirectory, "logs", "MySQL", "mysql_console_error_auto.log");
+            //logFilePathConsole = Path.Combine(projectDirectory, "logs", "MySQL", "mysql_console_error_auto.log");
 
             /*mysqlBin = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "dependencias", mysqlVersion, "bin", "mysqld.exe");
             myCnfPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "dependencias", mysqlVersion, "my.cnf");
             dataDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "dependencias", mysqlVersion, "data");
             logFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "logs", "MySQL", "mysql_error.log");
             mysqlBinConsole = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "dependencias", "mysql-8.0.36-winx64", "bin", "mysql.exe");*/
-            //logFilePathConsole = Path.Combine("dependencias", "mysql-8.0.36-winx64", "logs", "mysql_console_error_auto.log");
+            //logFilePathConsole = Path.Combine("dependencias", "mysql-8.0.36-winx64", "logs", "MySQL", "mysql_console_error_auto.log");
         }
 
         public void Condicion() {
