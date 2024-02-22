@@ -6,7 +6,7 @@
 
 # Descargar PWC
 
-* PWC for Windows x64 - [PWC.7z](https://drive.google.com/file/d/1DLjSwWBOFkIY4qqxbNrJ7lBWl7aQiOoq/view?usp=sharing)
+* PWC for Windows x64 - [PWC.7z](https://drive.google.com/file/d/1GFn4RG25J1yF3BGr_ZATYyhx-4rraGMo/view?usp=sharing)
 
 ## Clase: SolicitarDatos.php
 
