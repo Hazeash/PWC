@@ -26,18 +26,19 @@ class SolicitarDatos {
     /**
      * Maneja la solicitud de datos, ejecutando la consulta correspondiente según el método de solicitud (POST) y los datos proporcionados.
      *
+     * @param string $campos Los campos que deberá devolver la solicitud.
      * @param array $datos Los datos provenientes del formulario HTML.
      */
-    public function solicitud($datos) {
+    public function solicitud($campos, $datos) {
         if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST)) {
             $mysqli = $this->conexion->getConexion();
             $escapedData = array_map(function ($value) use ($mysqli) {
                 return mysqli_real_escape_string($mysqli, $value);
             }, $datos);
             if (count($datos) == 1 && isset($datos['categoria']) && $datos['categoria'] == 'general') {
-                $this->ejecutarConsultaGeneral();
+                $this->ejecutarConsultaGeneral($campos);
             } else {
-                $this->ejecutarConsultaVariada($datos);
+                $this->ejecutarConsultaVariada($campos, $datos);
             }
         } else {
             echo "Error: La solicitud no es de tipo POST.";
@@ -46,18 +47,21 @@ class SolicitarDatos {
 
     /**
      * Ejecuta una consulta SQL general para obtener todos los registros de la tabla.
+     * 
+     * @param string $campos Los campos que deberá devolver la solicitud.
      */
-    private function ejecutarConsultaGeneral() {
-        $stmt = $this->conexion->getConexion()->prepare("SELECT * FROM " . $this->tabla);
+    private function ejecutarConsultaGeneral($campos) {
+        $stmt = $this->conexion->getConexion()->prepare("SELECT " . $campos . " FROM " . $this->tabla);
         $this->ejecutarConsulta($stmt);
     }
 
     /**
      * Ejecuta una consulta SQL variada según los datos proporcionados.
      *
+     * @param string $campos Los campos que deberá devolver la solicitud.
      * @param array $datos Los datos recibidos mediante (POST).
      */
-    private function ejecutarConsultaVariada($datos) {
+    private function ejecutarConsultaVariada($campos, $datos) {
         $whereClause = "";
         $bindParams = "";
         $bindValues = [];
@@ -71,7 +75,7 @@ class SolicitarDatos {
             }
             $index++;
         }
-        $consulta = "SELECT * FROM " . $this->tabla;
+        $consulta = "SELECT " . $campos . " FROM " . $this->tabla;
         if (!empty($whereClause)) {
             $consulta .= " WHERE " . $whereClause;
         }
